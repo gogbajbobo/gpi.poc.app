@@ -38,10 +38,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../hbud.app-v.build/index.html'),
+    index: path.resolve(__dirname, '../gpi.poc.app-v.build/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../hbud.app-v.build'),
+    assetsRoot: path.resolve(__dirname, '../gpi.poc.app-v.build'),
     assetsSubDirectory: 'static',
     assetsPublicPath: './',
 

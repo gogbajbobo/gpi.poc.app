@@ -17,7 +17,7 @@ app.on('ready', function () {
 
     // serve from build folder
     win.loadURL(url.format({
-        pathname: path.join(__dirname, 'hbud.app-v.build/index.html'),
+        pathname: path.join(__dirname, 'gpi.poc.app-v.build/index.html'),
         protocol: 'file:',
         slashes: true
     }));

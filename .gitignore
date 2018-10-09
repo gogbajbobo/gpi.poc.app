@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
-/hbud.app-v.build/
+/gpi.poc.app-v.build/
 /electron/
 npm-debug.log*
 yarn-debug.log*
