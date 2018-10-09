@@ -183,17 +183,17 @@
             <el-table-column prop="approved" label="Approved">
                 <template slot-scope="data">
                     <template v-if="data.row.approved">
-                        <span>Approved</span>
+                        <span class="order-approved"><i class="el-icon-success"></i></span>
                     </template>
                     <template v-else>
                         <el-button type="primary" v-if="isAdmin" @click="approveOrder(data.row.id, data.row.ordername)">Approve</el-button>
-                        <span v-else>Wating for approval</span>
+                        <span v-else class="order-waiting-for-approve"><i class="el-icon-question"></i></span>
                     </template>
                 </template>
             </el-table-column>
 
             <el-table-column v-if="isUser" label="">
-                <template slot-scope="data">
+                <template slot-scope="data" v-if="!data.row.approved">
                     <el-button type="warning" size="mini" icon="el-icon-edit" circle @click="editOrder(data.row.id)"></el-button>
                     <el-button type="danger"
                                size="mini"
@@ -209,7 +209,7 @@
 
             <el-form :model="orderForm" :rules="orderFormRules" ref="orderForm">
 
-                <el-form-item label="Order name" :label-width="formLabelWidth" required prop="name">
+                <el-form-item label="Order name" :label-width="formLabelWidth" required prop="ordername">
                     <el-input v-model="orderForm.ordername" auto-complete="off"></el-input>
                 </el-form-item>
 
@@ -227,5 +227,13 @@
 </template>
 
 <style scoped>
+
+    .order-approved {
+        color: #67C23A;
+    }
+
+    .order-waiting-for-approve {
+        color: #E6A23C;
+    }
 
 </style>
