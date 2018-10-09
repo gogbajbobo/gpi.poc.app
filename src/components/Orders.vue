@@ -224,7 +224,11 @@
 
             <el-table-column v-if="isUser" label="">
                 <template slot-scope="data" v-if="!data.row.approved">
-                    <el-button type="warning" size="mini" icon="el-icon-edit" circle @click="editOrder(data.row.id)"></el-button>
+                    <el-button type="warning"
+                               size="mini"
+                               icon="el-icon-edit"
+                               circle
+                               @click="editOrder(data.row.id)"></el-button>
                     <el-button type="danger"
                                size="mini"
                                icon="el-icon-delete"
