@@ -200,7 +200,7 @@
 
         <el-row>
             <el-input class="order-search-string"
-                      placeholder="Search orders"
+                      placeholder="Search orders by name"
                       prefix-icon="el-icon-search"
                       v-model="orderSearchString"></el-input>
         </el-row>
