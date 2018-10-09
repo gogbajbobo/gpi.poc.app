@@ -16,6 +16,7 @@
 
                 user: <UserModel> auth.state.user,
                 isAdmin: <boolean> false,
+                isUser: <boolean> false,
                 formLabelWidth: '120px',
 
                 isAddingOrder: <boolean> false,
@@ -48,6 +49,7 @@
             orders.dispatchGetOrders();
             this.refreshTableData();
             this.isAdmin = User.isAdmin(this.user);
+            this.isUser = User.isUser(this.user);
 
         },
 
@@ -164,7 +166,7 @@
 
         <h1>Orders</h1>
 
-        <el-button v-if="isAdmin" type="primary" size="mini" icon="el-icon-circle-plus" @click="addOrder">Add order</el-button>
+        <el-button v-if="isUser" type="primary" size="mini" icon="el-icon-circle-plus" @click="addOrder">Add order</el-button>
 
         <el-table :data="tableData">
 
