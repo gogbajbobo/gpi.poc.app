@@ -4,6 +4,7 @@ import router from '../router'
 
 import TokenService from './token.service'
 import LoggerService from './logger.service'
+import { clearStoreAtLogout } from '../store'
 
 const
     authPath = '/auth',
@@ -50,7 +51,7 @@ axiosInstance.interceptors.response.use(response => {
 
     if (error.response && error.response.status === 401) {
 
-        auth.commitLogout();
+        clearStoreAtLogout();
         router.push({name: 'Login'})
 
     }

@@ -3,9 +3,9 @@ import Vuex, { Store } from 'vuex'
 import { getStoreBuilder } from "vuex-typex"
 import PersistedState from 'vuex-persistedstate'
 
-import { AuthState } from './modules/auth'
-import { RolesState } from './modules/roles'
-import { OrdersState } from "./modules/orders";
+import auth, { AuthState } from './modules/auth'
+import roles, { RolesState } from './modules/roles'
+import orders, { OrdersState } from "./modules/orders";
 
 export interface RootState  {
     auth: AuthState,
@@ -23,4 +23,13 @@ const storeOptions = {
 };
 
 const store: Store<RootState> = getStoreBuilder<RootState>().vuexStore(storeOptions);
+
 export default store
+
+export function clearStoreAtLogout() {
+
+    auth.commitLogout();
+    roles.commitLogout();
+    orders.commitLogout();
+
+}

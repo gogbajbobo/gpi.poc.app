@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import {RouteConfig} from "vue-router/types/router";
+import { clearStoreAtLogout } from '../store'
 
 import auth from '../store/modules/auth'
 import TokenService from '../services/token.service'
@@ -111,7 +112,7 @@ router.beforeEach((to, from, next) => {
                 to.name === 'Login' ? next({name: 'Main'}) : checkRoles(to, from, next)
             )
             .catch(err => {
-                auth.commitLogout();
+                clearStoreAtLogout();
                 return next({name: 'Login'})
             })
 

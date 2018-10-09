@@ -7,6 +7,7 @@
     import { ElMessageBoxOptions } from 'element-ui/lib'
     import auth from '../../store/modules/auth'
     import router from '../../router'
+    import { clearStoreAtLogout } from '../../store'
 
     export default Vue.extend({
 
@@ -31,7 +32,7 @@
 
                     return MessageService.showConfirmMessage('Logout', 'Are you sure to logout?')
                         .then(() => {
-                            auth.commitLogout();
+                            clearStoreAtLogout();
                             router.push({name: 'Login'})
                         })
                         .catch(() => {});
