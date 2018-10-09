@@ -11,7 +11,8 @@ import {
     Profile,
     Settings,
     Users,
-    Register
+    Register,
+    Orders
 } from '../components/'
 
 Vue.use(Router);
@@ -72,13 +73,23 @@ const register: RouteConfig = {
     }
 };
 
+const orders: RouteConfig = {
+    path: '/orders',
+    name: 'Orders',
+    component: Orders,
+    meta: {
+        localname: 'Orders page'
+    }
+};
+
 const routes: RouteConfig[] = [
     main,
     login,
     profile,
     settings,
     users,
-    register
+    register,
+    orders
 ];
 
 const router = new Router({

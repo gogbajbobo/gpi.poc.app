@@ -15,6 +15,11 @@
                 index: '/users',
                 title: 'Users',
                 icon: 'fas fa-users'
+            },
+            {
+                index: '/orders',
+                title: 'Orders',
+                icon: 'fas fa-list-ul'
             }
         ]
     };
