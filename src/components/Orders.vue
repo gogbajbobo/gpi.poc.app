@@ -263,10 +263,12 @@
 <style scoped>
 
     .order-approved {
+        font-size: x-large;
         color: #67C23A;
     }
 
     .order-waiting-for-approve {
+        font-size: x-large;
         color: #E6A23C;
     }
 
