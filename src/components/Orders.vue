@@ -177,7 +177,11 @@
             <el-table-column v-if="isUser" label="">
                 <template slot-scope="data">
                     <el-button type="warning" size="mini" icon="el-icon-edit" circle @click="editOrder(data.row.id)"></el-button>
-                    <el-button type="danger" size="mini" icon="el-icon-delete" circle @click="deleteOrder(data.row.id, data.row.name)"></el-button>
+                    <el-button type="danger"
+                               size="mini"
+                               icon="el-icon-delete"
+                               circle
+                               @click="deleteOrder(data.row.id, data.row.ordername)"></el-button>
                 </template>
             </el-table-column>
 
