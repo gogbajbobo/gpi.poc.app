@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import Vue from 'vue'
+    import dateFormat from 'date-fns/format'
 
     import MessageService from '../services/message.service'
     import orders from '../store/modules/orders'
@@ -160,6 +161,10 @@
                     .then(() => orders.dispatchUpdateOrder({ orderId, ordername, approved: true }).catch(MessageService.showError))
                     .catch(() => {})
 
+            },
+
+            dateFormatter(order) {
+                return dateFormat(order.created_at, 'DD MMM YYYY, HH:mm:ss')
             }
 
         }
@@ -177,7 +182,7 @@
         <el-table :data="tableData" :default-sort = "{prop: 'id', order: 'ascending'}">
 
             <el-table-column prop="id" label="Id" width="60px" :sortable="true"></el-table-column>
-            <el-table-column prop="created_at" label="Date" :sortable="true"></el-table-column>
+            <el-table-column prop="created_at" label="Date" :sortable="true" :formatter="dateFormatter"></el-table-column>
             <el-table-column prop="ordername" label="Name" :sortable="true"></el-table-column>
             <el-table-column prop="approved" label="Approved" :sortable="true">
                 <template slot-scope="data">
