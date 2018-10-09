@@ -4,6 +4,7 @@
     import dateFormat from 'date-fns/format'
 
     import MessageService from '../services/message.service'
+    import NetworkService from '../services/network.service'
     import orders from '../store/modules/orders'
     import auth from '../store/modules/auth'
     import User, { UserModel } from '../models'
@@ -16,6 +17,7 @@
             return {
 
                 user: <UserModel> auth.state.user,
+                users: <Array<UserModel>> [],
                 isAdmin: <boolean> false,
                 isUser: <boolean> false,
                 formLabelWidth: '120px',
@@ -53,6 +55,14 @@
             this.refreshTableData();
             this.isAdmin = User.isAdmin(this.user);
             this.isUser = User.isUser(this.user);
+
+            if (this.isAdmin) {
+
+                NetworkService.getUsers()
+                    .then(users => this.users = users)
+                    .catch(MessageService.showError)
+
+            }
 
         },
 
@@ -182,6 +192,10 @@
 
             dateFormatter(order) {
                 return dateFormat(order.created_at, 'DD MMM YYYY, HH:mm:ss')
+            },
+
+            usernameForUserId(user_id: number) {
+                return (this.users.find(user => user.id === user_id) || {username: 'Unknown user'}).username
             }
 
         }
@@ -210,6 +224,11 @@
             <el-table-column prop="id" label="Id" width="60px" :sortable="true"></el-table-column>
             <el-table-column prop="created_at" label="Date" :sortable="true" :formatter="dateFormatter"></el-table-column>
             <el-table-column prop="ordername" label="Name" :sortable="true"></el-table-column>
+            <el-table-column v-if="isAdmin" prop="user_id" label="User" :sortable="true">
+                <template slot-scope="data">
+                    {{ usernameForUserId(data.row.user_id) }}
+                </template>
+            </el-table-column>
             <el-table-column prop="approved" label="Approved" :sortable="true">
                 <template slot-scope="data">
                     <template v-if="data.row.approved">
