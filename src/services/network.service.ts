@@ -141,6 +141,13 @@ class NetworkService {
 
     }
 
+    static getOrders(): Promise<any> {
+
+        return axiosInstance.get(`/api/orders`)
+            .then(response => response.data.orders)
+            .catch(rejectError)
+    }
+
 }
 
 export default NetworkService;
