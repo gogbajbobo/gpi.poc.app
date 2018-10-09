@@ -177,6 +177,7 @@
         <el-table :data="tableData" :default-sort = "{prop: 'id', order: 'ascending'}">
 
             <el-table-column prop="id" label="Id" width="60px" :sortable="true"></el-table-column>
+            <el-table-column prop="created_at" label="Date" :sortable="true"></el-table-column>
             <el-table-column prop="ordername" label="Name" :sortable="true"></el-table-column>
             <el-table-column prop="approved" label="Approved" :sortable="true">
                 <template slot-scope="data">
