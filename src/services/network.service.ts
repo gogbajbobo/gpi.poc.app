@@ -148,6 +148,27 @@ class NetworkService {
             .catch(rejectError)
     }
 
+    static addOrder(ordername): Promise<any> {
+
+        return axiosInstance.post(`/api/orders`, { ordername })
+            .catch(rejectError)
+
+    }
+
+    static updateOrder(orderId, ordername, approved): Promise<any> {
+
+        return axiosInstance.put(`/api/orders/${ orderId }`, { ordername, approved })
+            .catch(rejectError)
+
+    }
+
+    static deleteOrder(orderId): Promise<any> {
+
+        return axiosInstance.delete(`/api/orders/${ orderId }`)
+            .catch(rejectError)
+
+    }
+
 }
 
 export default NetworkService;
