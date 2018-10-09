@@ -31,6 +31,8 @@
                     ordername: [ { required: true, message: 'Please input Order name', trigger: 'blur' } ]
                 },
 
+                orderSearchString: <string> '',
+
                 tableData: <Array<any>> [],
                 selectedOrderId: <number|undefined> undefined
 
@@ -63,6 +65,10 @@
 
             orders: function() {
                 this.refreshTableData()
+            },
+
+            orderSearchString: function() {
+                this.refreshTableData()
             }
 
         },
@@ -70,7 +76,18 @@
         methods: {
 
             refreshTableData() {
-                this.tableData = this.orders || []
+                
+                let tableData = this.orders || [];
+                
+                if (this.orderSearchString) {
+
+                    const searchStringLowercase = this.orderSearchString.toLowerCase();
+                    tableData = tableData.filter(order => order.ordername.toLowerCase().includes(searchStringLowercase))
+
+                }
+                
+                this.tableData = tableData
+
             },
 
             addOrder() {
@@ -177,7 +194,16 @@
 
     <div>
 
-        <el-button v-if="isUser" type="primary" size="mini" icon="el-icon-circle-plus" @click="addOrder">Add order</el-button>
+        <el-row v-if="isUser" >
+            <el-button type="primary" size="mini" icon="el-icon-circle-plus" @click="addOrder">Add order</el-button>
+        </el-row>
+
+        <el-row>
+            <el-input class="order-search-string"
+                      placeholder="Search orders"
+                      prefix-icon="el-icon-search"
+                      v-model="orderSearchString"></el-input>
+        </el-row>
 
         <el-table :data="tableData" :default-sort = "{prop: 'id', order: 'ascending'}">
 
@@ -238,6 +264,11 @@
 
     .order-waiting-for-approve {
         color: #E6A23C;
+    }
+
+    .order-search-string {
+        margin-top: 10px;
+        width: 256px;
     }
 
 </style>
