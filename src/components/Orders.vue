@@ -174,7 +174,7 @@
 
         <el-button v-if="isUser" type="primary" size="mini" icon="el-icon-circle-plus" @click="addOrder">Add order</el-button>
 
-        <el-table :data="tableData">
+        <el-table :data="tableData" :default-sort = "{prop: 'id', order: 'ascending'}">
 
             <el-table-column prop="id" label="Id" width="60px" :sortable="true"></el-table-column>
             <el-table-column prop="ordername" label="Name" :sortable="true"></el-table-column>
