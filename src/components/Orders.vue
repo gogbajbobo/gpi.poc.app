@@ -171,7 +171,7 @@
         <el-table :data="tableData">
 
             <el-table-column prop="id" label="Id" width="60px"></el-table-column>
-            <el-table-column prop="name" label="Name"></el-table-column>
+            <el-table-column prop="ordername" label="Name"></el-table-column>
             <el-table-column prop="approved" label="Approved"></el-table-column>
 
             <el-table-column label="">
