@@ -196,7 +196,16 @@
 
             usernameForUserId(user_id: number) {
                 return (this.users.find(user => user.id === user_id) || {username: 'Unknown user'}).username
+            },
+
+            userFilter() {
+                return this.users.filter(user => user.roles.includes('user')).map(user => ({ text: user.username, value: user.id }))
+            },
+
+            userFilterMethod(value, row) {
+                return row.user_id === value
             }
+
 
         }
 
@@ -224,7 +233,7 @@
             <el-table-column prop="id" label="Id" width="60px" :sortable="true"></el-table-column>
             <el-table-column prop="created_at" label="Date" :sortable="true" :formatter="dateFormatter"></el-table-column>
             <el-table-column prop="ordername" label="Name" :sortable="true"></el-table-column>
-            <el-table-column v-if="isAdmin" prop="user_id" label="User" :sortable="true">
+            <el-table-column v-if="isAdmin" prop="user_id" label="User" :sortable="true" :filters="userFilter()" :filter-method="userFilterMethod">
                 <template slot-scope="data">
                     {{ usernameForUserId(data.row.user_id) }}
                 </template>
