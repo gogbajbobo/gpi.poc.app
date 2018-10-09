@@ -152,6 +152,14 @@
 
                     })
                     .catch(() => console.error('order form validation fail'))
+            },
+
+            approveOrder(orderId: number, ordername: string) {
+
+                MessageService.showConfirmMessage(`Approve order '${ ordername }'`, 'Are you sure?')
+                    .then(() => orders.dispatchUpdateOrder({ orderId, ordername, approved: true }).catch(MessageService.showError))
+                    .catch(() => {})
+
             }
 
         }
@@ -178,7 +186,7 @@
                         <span>Approved</span>
                     </template>
                     <template v-else>
-                        <el-button type="primary" v-if="isAdmin">Approve</el-button>
+                        <el-button type="primary" v-if="isAdmin" @click="approveOrder(data.row.id, data.row.ordername)">Approve</el-button>
                         <span v-else>Wating for approval</span>
                     </template>
                 </template>
