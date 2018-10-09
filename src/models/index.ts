@@ -6,5 +6,7 @@ export interface UserModel {
 }
 
 const isAdmin = (user: UserModel): boolean => user.roles.split(',').includes('admin');
+const isUser = (user: UserModel): boolean => user.roles.split(',').includes('user');
+const isVisitor = (user: UserModel): boolean => user.roles.split(',').includes('visitor');
 
-export default { isAdmin }
+export default { isAdmin, isUser, isVisitor }
