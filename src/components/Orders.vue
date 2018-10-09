@@ -172,7 +172,17 @@
 
             <el-table-column prop="id" label="Id" width="60px"></el-table-column>
             <el-table-column prop="ordername" label="Name"></el-table-column>
-            <el-table-column prop="approved" label="Approved"></el-table-column>
+            <el-table-column prop="approved" label="Approved">
+                <template slot-scope="data">
+                    <template v-if="data.row.approved">
+                        <span>Approved</span>
+                    </template>
+                    <template v-else>
+                        <el-button type="primary" v-if="isAdmin">Approve</el-button>
+                        <span v-else>Wating for approval</span>
+                    </template>
+                </template>
+            </el-table-column>
 
             <el-table-column v-if="isUser" label="">
                 <template slot-scope="data">
