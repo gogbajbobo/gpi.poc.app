@@ -23,11 +23,11 @@
                 orderFormVisible: <boolean> false,
                 orderForm: {
                     id: <number|undefined> undefined,
-                    name: <string> '',
+                    ordername: <string> '',
                     approved: <boolean> false
                 },
                 orderFormRules: {
-                    name: [ { required: true, message: 'Please input Order name', trigger: 'blur' } ]
+                    ordername: [ { required: true, message: 'Please input Order name', trigger: 'blur' } ]
                 },
 
                 tableData: <Array<any>> [],
@@ -90,7 +90,7 @@
                     const order: any = (this.orders || []).filter(order => order.id === orderId)[0];
 
                     this.orderForm.id = order.id;
-                    this.orderForm.name = order.name;
+                    this.orderForm.ordername = order.ordername;
                     this.orderForm.approved = order.approved;
                     this.orderFormVisible = true
 
@@ -127,7 +127,7 @@
 
                         if (this.isAddingOrder) {
 
-                            orders.dispatchAddOrder({ordername: form.name})
+                            orders.dispatchAddOrder({ordername: form.ordername})
                                 .then(() => {
 
                                     formRef.resetFields();
@@ -139,7 +139,7 @@
 
                         } else {
 
-                            orders.dispatchUpdateOrder({orderId: form.id, ordername: form.name, approved: form.approved})
+                            orders.dispatchUpdateOrder({orderId: form.id, ordername: form.ordername, approved: form.approved})
                                 .then(() => {
 
                                     formRef.resetFields();
@@ -192,7 +192,7 @@
             <el-form :model="orderForm" :rules="orderFormRules" ref="orderForm">
 
                 <el-form-item label="Order name" :label-width="formLabelWidth" required prop="name">
-                    <el-input v-model="orderForm.name" auto-complete="off"></el-input>
+                    <el-input v-model="orderForm.ordername" auto-complete="off"></el-input>
                 </el-form-item>
 
             </el-form>
