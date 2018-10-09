@@ -15,33 +15,6 @@
                 index: '/users',
                 title: 'Users',
                 icon: 'fas fa-users'
-            },
-            {
-                index: '/transactions',
-                title: 'Transactions',
-                icon: 'el-icon-tickets'
-            },
-            {
-                index: '/accounts',
-                title: 'Accounts',
-                icon: 'el-icon-goods',
-                subitems: [
-                    {
-                        index: '/accounts-income',
-                        title: 'Income',
-                        icon: 'el-icon-goods el-icon--green'
-                    },
-                    {
-                        index: '/accounts-current',
-                        title: 'Current',
-                        icon: 'el-icon-goods el-icon--blue'
-                    },
-                    {
-                        index: '/accounts-expense',
-                        title: 'Expense',
-                        icon: 'el-icon-goods el-icon--red'
-                    }
-                ]
             }
         ]
     };
@@ -65,9 +38,6 @@
         },
 
         mounted() {
-            if (this.$router.currentRoute.name === 'Accounts' && !this.isCollapse) {
-                (this.$refs.asideMenu as any).open('/accounts');
-            }
         },
 
         destroyed() {
@@ -75,14 +45,7 @@
         },
 
         watch:{
-            $route (to, from) {
-
-                if (to.name !== 'Accounts') {
-                    (this.$refs.asideMenu as any).close('/accounts');
-                }
-                this.activeIndex = to.path
-
-            }
+            $route (to, from) { this.activeIndex = to.path }
         }
 
     })
