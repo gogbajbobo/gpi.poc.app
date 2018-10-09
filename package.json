@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "axios": "^0.18.0",
+        "date-fns": "^1.29.0",
         "element-ui": "^2.4.0",
         "mint-ui": "^2.2.13",
         "mobile-detect": "^1.4.1",
