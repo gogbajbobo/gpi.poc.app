@@ -172,8 +172,6 @@
 
     <div>
 
-        <h1>Orders</h1>
-
         <el-button v-if="isUser" type="primary" size="mini" icon="el-icon-circle-plus" @click="addOrder">Add order</el-button>
 
         <el-table :data="tableData">
