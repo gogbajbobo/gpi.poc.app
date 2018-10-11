@@ -11,7 +11,7 @@ const initialOrdersState: OrdersState = {
     orders: undefined
 };
 
-const orderState = getStoreBuilder<RootState>().module<OrdersState>("orders", initialOrdersState);
+const orderState = getStoreBuilder<RootState>().module<OrdersState>("orders", Object.assign({}, initialOrdersState));
 
 function refreshOrders() {
 

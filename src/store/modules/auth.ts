@@ -14,12 +14,12 @@ const initialAuthState: AuthState = {
     expirationTime: undefined
 };
 
-const authState = getStoreBuilder<RootState>().module<AuthState>("auth", initialAuthState);
+const authState = getStoreBuilder<RootState>().module<AuthState>("auth", Object.assign({}, initialAuthState));
 
 function logout(state: AuthState) {
 
     console.log('logout', auth.state.user!.username);
-    Object.assign(state, initialAuthState)
+    fillUpAuthStore(state, initialAuthState);
 
 }
 

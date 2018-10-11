@@ -12,7 +12,7 @@ const initialRolesState: RolesState = {
     rolesList: []
 };
 
-const roleState = getStoreBuilder<RootState>().module<RolesState>("roles", initialRolesState);
+const roleState = getStoreBuilder<RootState>().module<RolesState>("roles", Object.assign({}, initialRolesState));
 
 function getRoles() {
 
