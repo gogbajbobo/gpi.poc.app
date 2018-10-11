@@ -16,7 +16,7 @@ const axiosInstance = axios.create();
 const isProduction = process.env.NODE_ENV === 'production';
 
 axiosInstance.defaults.baseURL = isProduction
-    ? 'https://gpi.grigoblin.ru'
+    ? 'https://gpi-api.gogbajbobo.ru'
     : 'http://maxbook.local:8001';
 
 axiosInstance.interceptors.request.use(config => {
