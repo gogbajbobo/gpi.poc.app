@@ -228,7 +228,7 @@
                       v-model="orderSearchString"></el-input>
         </el-row>
 
-        <el-table :data="tableData" :default-sort = "{prop: 'id', order: 'ascending'}">
+        <el-table :data="tableData" :default-sort = "{prop: 'id', order: 'descending'}">
 
             <el-table-column prop="id" label="Id" width="60px" :sortable="true"></el-table-column>
             <el-table-column prop="created_at" label="Date" :sortable="true" :formatter="dateFormatter"></el-table-column>
